@@ -1,0 +1,19 @@
+### JEKYLL安装配置
+
+jekyll是通过markdown编写的静态文件，生成Html页面，它的优点是提升了页面的响应速度，并且让博主可以只专注于写文章，不用再去考虑如何排版。
+
+本地服务开启后，Jekyll服务默认端口是4000，所以我打开浏览器，输入：http://localhost:4000 即可访问.
+
+此时,去官网下载jekyll模板,解压,确认有"_post文件夹",将md放入其中,命名需要满足格式 20xx-xx-xx-Day01.mb.
+
+将下载的模板设置为本地仓库,git remote-v 查看远端仓库地址,添加自己的地址
+```
+git remote add origin https://github.com/774963525/774963525.github.io
+```
+提交,推送.如果失败,可以强制推送.
+```
+git push -f origin master
+```
+成功的话就推送到了远端仓库,现在就可以打开原来的网址看到模板被更换. 
+
+
