@@ -6,7 +6,10 @@ jekyll是通过markdown编写的静态文件，生成Html页面，它的优点�
 
 此时,去官网下载jekyll模板,解压,确认有"_post文件夹",将md放入其中,命名需要满足格式 20xx-xx-xx-Day01.mb.
 
-将下载的模板设置为本地仓库,git remote-v 查看远端仓库地址,添加自己的地址
+将下载的模板设置为本地仓库`git remote-v`
+
+ 查看远端仓库地址,添加自己的地址
+
 ```
 git remote add origin https://github.com/774963525/774963525.github.io
 ```
