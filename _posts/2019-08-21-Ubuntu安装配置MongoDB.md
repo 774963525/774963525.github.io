@@ -77,6 +77,17 @@ db.createUser({
 	]
 });
 ```
+创建拥有所有权限的root账户
+```
+db.createUser({
+	user:'root',
+	pwd:'123456',
+	roles: [
+		{role:'root', db:'admin'}
+	]
+})
+```
+
 修改ＭongoDB的配置文件,(因为我们是用命令行安装的,所以配置文件默认放在etc目录中)将/etc/mongod.conf文件中的auth=true前面的注释去掉，然后用
 
 `sudo service mongod restart`重启MongDB.
