@@ -12,7 +12,7 @@
 
 `MYSQL_ROOT_PASSWORD=123456 mysql:8.0.17` -d表示后台启动;test为名字;-p表示自定义映射端口号,-P则为计算机自动生成;123456为密码 mysql版本为8.0.17
 
-6.`docker ps -a` 可以看到当前拥有的所有镜像,其中mysql的容器状态为up表示正在运行.进入`docker exec -it [容器名或容器id]`
+6.`docker ps -a` 可以看到当前拥有的所有镜像,其中mysql的容器状态为up表示正在运行.进入`docker exec -it [容器名或容器id] bash`
 
 7.成功,`mysql -uroot-p`创建一个database,去本地可视化查看,使用10086端口并输入密码准备连接,然而报错.
 
