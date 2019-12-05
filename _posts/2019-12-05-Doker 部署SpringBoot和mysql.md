@@ -2,7 +2,7 @@
 
 
 1. 创建mysql镜像
- ```
+```
  docker run -d -e MYSQL_ROOT_PASSWORD=root --name mysql8  mysql:8.0.17  --default-authentication-plugin=mysql_native_password
 
  '-d' 表示后台启动,可以用 '-it'代替.
@@ -11,15 +11,15 @@
  '--name' 为容器起名
  'mysql:8.0.17' mysql的版本号
  由于mysql 8 的新特性,
- 加一个
- `--default-authentication-plugin=mysql_native_password`
- ```
+ 加一个--default-authentication-plugin=mysql_native_password
+```
+
 连接上后去可视化测试,**注意:**创建一个同名的数据库后才可以导入本机导出的mysql文件.
 
 2. 配置java项目中的配置页 
-```
-spring.datasource.url=jdbc:mysql://mysql8:3306/learn
-```
+
+`spring.datasource.url=jdbc:mysql://mysql8:3306/learn`
+
 **mysql8: 我的mysql镜像中准备好的容器名;**
 
 **leran: 容器对应的database**
@@ -31,6 +31,7 @@ spring.datasource.url=jdbc:mysql://mysql8:3306/learn
 3. 根据之前的文档重新打包
 
 4. 容器互联
+
 ```
 docker run --name test100 --link mysql8:mysql8 -d -p 8080:8080 test100
 	
