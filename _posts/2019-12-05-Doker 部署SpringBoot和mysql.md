@@ -1,7 +1,7 @@
 ### Doker 部署java项目和mysql 
 
 
-1. 创建mysql镜像
+1. #### 创建mysql镜像
 
 ```
  docker run -d -e MYSQL_ROOT_PASSWORD=root --name mysql8  mysql:8.0.17  --default-authentication-plugin=mysql_native_password
@@ -16,7 +16,7 @@
 ```
 连接上后去可视化测试,**注意:**创建一个同名的数据库后才可以导入本机导出的mysql文件.
 
-2. 配置java项目中的配置页 
+2. #### 配置java项目中的配置页 
 ```
 spring.datasource.url=jdbc:mysql://mysql8:3306/learn
 
@@ -26,9 +26,9 @@ leran: 容器对应的database
 
 将密码修改为创建容器时的密码
 
-3. 根据之前的文档重新打包
+3. #### 根据之前的文档重新打包
 
-4. 容器互联
+4. #### 容器互联
 
 ```
 docker run --name test100 --link mysql8:mysql8 -d -p 8080:8080 test100
