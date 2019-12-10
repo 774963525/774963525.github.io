@@ -1,6 +1,10 @@
 ### Doker 部署java项目和mysql 
 
 
+
+
+
+
 1. 创建mysql镜像
 ```
  docker run -d -e MYSQL_ROOT_PASSWORD=root --name mysql8  mysql:8.0.17  --default-authentication-plugin=mysql_native_password
