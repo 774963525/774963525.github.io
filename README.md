@@ -1,135 +1,82 @@
-Solana – a Wholesome, Flat, Sunshiny Jekyll Theme
-===============================================
+# 码志
 
-**Solana** is a theme for the [Jekyll][jk] static site generator. [View the demo][demo].
+我的个人博客：<https://mazhuang.org>，欢迎 Star 和 Fork。
 
-### Features
+## 概览
 
-* Compatible with GitHub Pages
-* Supports categories & tags
-* Responsive design
-* Lightweight (no jQuery, Bootstrap, etc.) 
-* Obfuscates email addresses for protection against email harvesting bots
-* Comments via outbound links to Reddit
+<!-- vim-markdown-toc GFM -->
 
-![](https://raw.githubusercontent.com/rlue/i/master/solana/responsive.gif)
+* [效果预览](#效果预览)
+* [Fork 指南](#fork-指南)
+* [贴心提示](#贴心提示)
+* [经验与思考](#经验与思考)
+* [致谢](#致谢)
 
-![](https://raw.githubusercontent.com/rlue/i/master/solana/device_mockup.png)
+<!-- vim-markdown-toc -->
 
-Installation
-------------
+## 效果预览
 
-### Cloning Solana to your GitHub Pages
+**[在线预览 &rarr;](https://mazhuang.org)**
 
-1. Prepare a [new GitHub repository][new] named after your GitHub Pages address (`<username>.github.io`). Do not initialize with a `README`, `.gitignore`, or license.
-2. Clone this repository:
+![screenshot home](https://mazhuang.org/assets/images/screenshots/home.png)
 
-        $ git clone https://github.com/rlue/jekyll-solana.git
+## Fork 指南
 
-3. Associate your local copy with the GitHub Pages repo you just created:
+Fork 本项目之后，还需要做一些事情才能让你的页面「正确」跑起来。
 
-        $ cd solana
-        $ git remote rm origin
-        $ git remote add origin https://github.com/<username>/<username>.github.io
+1. 正确设置项目名称与分支。
 
-4. In `_config.yml`, replace the `baseurl` site variable (`/jekyll-solana`) with an empty string (`''`):
+   按照 GitHub Pages 的规定，名称为 `username.github.io` 的项目的 master 分支，或者其它名称的项目的 gh-pages 分支可以自动生成 GitHub Pages 页面。
 
-        $ sed -i "s/\/jekyll-solana/''            /" _config.yml     # on UNIX
-        $ sed -i '' "s/\/jekyll-solana/''            /" _config.yml  # on Mac
+2. 修改域名。
 
-5. And push:
+   如果你需要绑定自己的域名，那么修改 CNAME 文件的内容；如果不需要绑定自己的域名，那么删掉 CNAME 文件。
 
-        $ git push -u origin master
+3. 修改配置。
 
-In just a few minutes, your site should be live at https://\<username\>.github.io/!
+   网站的配置基本都集中在 \_config.yml 文件中，将其中与个人信息相关的部分替换成你自己的，比如网站的 url、title、subtitle 和第三方评论模块的配置等。
 
-### Previewing the site on your machine
+   **评论模块：** 目前支持 disqus、gitment 和 gitalk，选用其中一种就可以了，推荐使用 gitalk。它们各自的配置指南链接在 \_config.yml 文件的 Comments 一节里都贴出来了。
 
-1. Ensure that you have a Ruby development environment installed on your machine, including [Bundler][bun].
-2. Install the dependencies:
+   **注意：** 如果使用 disqus，因为 disqus 处理用户名与域名白名单的策略存在缺陷，请一定将 disqus.username 修改成你自己的，否则请将该字段留空。我对该缺陷的记录见 [Issues#2][3]。
 
-        $ bundle install
+4. 删除我的文章与图片。
 
-3. Start the server: 
+   如下文件夹中除了 template.md 文件外，都可以全部删除，然后添加你自己的内容。
 
-        $ bundle exec jekyll serve
+   * \_posts 文件夹中是我已发布的博客文章。
+   * \_drafts 文件夹中是我尚未发布的博客文章。
+   * \_wiki 文件夹中是我已发布的 wiki 页面。
+   * images 文件夹中是我的文章和页面里使用的图片。
 
-You should now have a development preview of your site at http://localhost:4000/.
+5. 修改「关于」页面。
 
-Usage
------
+   pages/about.md 文件内容对应网站的「关于」页面，里面的内容多为个人相关，将它们替换成你自己的信息，包括 \_data 目录下的 skills.yml 和 social.yml 文件里的数据。
 
-### Customizing the theme
+## 贴心提示
 
-Edit the data in `_config.yml` as appropriate. You’ll also want to rewrite the `README` and replace identifying graphics (`/i/avatar.png`, `/favicon.ico`) with your own.
+1. 排版建议遵照一定的规范，推荐 [中文文案排版指北（简体中文版）][1]。
 
-### Creating new posts
+2. 在本地预览博客效果可以参考 [Setting up your Pages site locally with Jekyll][2]。
 
-As with any Jekyll site, posts are generated from Markdown files placed in the `_posts` directory, and must be named according to the following format: `<year>-<month>-<day>-<url_slug>.md`. See the sample posts for examples of how to format rich text in Markdown.
+## 经验与思考
 
-Post content must be preceded by [YAML frontmatter][doc-fm] describing, at a minimum, the title of the post. Keep titles under 60 characters, and teasers under 160.
+* 简约，尽量每个页面都不展示多余的内容。
 
-### Categories & Tags
+* 有时一图抵千言，有时可能只会拖慢网页加载速度。
 
-This repository automatically generates “category” and “tag” archive pages based on labels provided by you in each post’s aforementioned YAML frontmatter. This feature is not available through Jekyll itself or the plugins approved for use on GitHub Pages, so it has been implemented using [git hooks][ghk].
+* 言之有物，不做无痛之呻吟。
 
-To enable this feature, run the following command from the project root:
+* 如果写技术文章，那先将技术原理完全理清了再开始写，一边摸索技术一边组织文章效率较低。
 
-```
-$ ln -s ../../.scripts/pre-commit.rb .git/hooks/pre-commit
-```
+* 杜绝难断句、难理解的长句子，如果不能将其拆分成几个简洁的短句，说明脑中的理解并不清晰。
 
-Now, these scripts will run every time you `git commit`, ensuring that your categories and tags pages always stay up-to-date.
+* 可以学习一下那些高质量的博主，他们的行文，内容组织方式，有什么值得借鉴的地方。
 
-#### Explanation
+## 致谢
 
-Solana implements categories and tags as [‘collections’][doc-col], meaning each has its own top-level directory in the project root (`/_category` & `/_tag`). Inside these directories, there is a file representing each category or tag.
+本博客外观基于 [DONGChuan](https://dongchuan.github.io) 修改，感谢！
 
-These files are generated by `/.scripts/spawn_labels.rb`, based on the `category:` and `tags:` attributes listed at the top of each post. The wrapper script `/.scripts/pre-commit.rb` calls this first script, then adds the newly created files to the git repo.
-
-### Comments
-
-As a static site generator, Jekyll has no means to provide a commenting system. For this theme, discussion is outsourced to Reddit, and requires some manual intervention. The process is as follows:
-
-1. Publish a post.
-2. Post it to Reddit.
-3. Include the resulting Reddit URL in the post’s YAML frontmatter:
-
-        reddit_post: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/'
-
-   Now, a link to the Reddit discussion will appear at the end of the post content, before the footnotes (if any).
-
-   ![](https://raw.githubusercontent.com/rlue/i/master/solana/comments-1.png)
-4. If the post receives noteworthy comments that you would like to embed directly on the page, add their permalinks to the YAML frontmatter as well:
-
-        featured_comments:
-          - url: 'https://www.reddit.com/r/Jekyll/comments/6258ln/welcome_to_solana/dfjtxba/'
-            context: false
-            freeze: false
-
-   The `context` flag tells the embed script to include the target comment’s parent. The `freeze` flag prevents live updating in the event that a comment is edited after the fact. Both default to `false`.
-
-   ![](https://raw.githubusercontent.com/rlue/i/master/solana/comments-2.png)
-
-Modifying
----------
-
-See the official documentation for an overview of [how Jekyll sites are organized][doc-dirs] or [how to get started][doc-qs].
-
-The CSS for this theme was organized following Harry Roberts’ [Inverted Triangle CSS architecture][itcss].
-
-License
--------
-
-© 2017 Ryan Lue. This project is licensed under the terms of the MIT license.
-
-[jk]: http://jekyllrb.com/
-[demo]: https://solana.ryanlue.com/
-[new]: https://github.com/new
-[bun]: https://github.com/bundler/bundler#installation-and-usage
-[doc-fm]: https://jekyllrb.com/docs/frontmatter/
-[ghk]: http://githooks.com/
-[doc-col]: https://jekyllrb.com/docs/collections/
-[doc-dirs]: https://jekyllrb.com/docs/structure/
-[doc-qs]: https://jekyllrb.com/docs/quickstart/
-[itcss]: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
+[1]: https://github.com/mzlogin/chinese-copywriting-guidelines
+[2]: https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/
+[3]: https://github.com/mzlogin/mzlogin.github.io/issues/2
